@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 import time
+'''此模块为小车的各种定义'''
+'''封装小车的相关方法，方便其他模块直接调用'''
 IN1 = 37#1 right
 IN2 = 35#
 IN3 = 33#2 left
@@ -10,9 +12,10 @@ BEE = 23
 R_LIGHT = 40
 G_LIGHT = 38
 B_LIGHT = 36
+
 class Car():
     '''
-        a class about Car action
+        此类是小车的类，定义了小车的属性和相关方法
     '''
     def __init__(self):
         '''

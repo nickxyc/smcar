@@ -18,7 +18,7 @@ def deal(sock,addr):
     :return:
     '''
     if sock.recv(1024).decode('utf-8') == 'go':
-        
+        caration.
 
 
 print('等待连接')

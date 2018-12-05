@@ -3,8 +3,6 @@ from Carclass import Car
 import time
 from Carclass import dangerous
 try:
-    caraction = Car()
-    dangerous = dangerous()
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(caraction.IN3,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.IN4,GPIO.OUT,initial = GPIO.LOW)
@@ -16,6 +14,9 @@ try:
     GPIO.setup(caraction.R_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.G_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.B_LIGHT,GPIO.OUT,initial = GPIO.LOW)
+    caraction = Car()
+    dangerous = dangerous()
+
     caraction.forward()
     while(1):
         if dangerous.check() == 0:

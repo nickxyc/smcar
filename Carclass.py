@@ -90,7 +90,7 @@ class dangerous():
         将实例的action 方法作为Car类的实例
         将实例的BEE方法对应蜂鸣器的GPIO接口
         '''
-        self.TRIG = TRIG
+        self.TRIG = TRIG    #添加实例的属性
         self.ECHO = ECHO
         self.action = Car()
         self.BEE = BEE

@@ -51,7 +51,7 @@ class Car():
         GPIO.output(IN2,False)
         GPIO.output(IN4,False)
         #GPIO.output(R_LIGHT,True)
-        self.LIGHT.R_LIGHT()
+        self.LIGHT.R_LIGHT()#停车灯红色
         
     def back(self):
         '''
@@ -63,7 +63,7 @@ class Car():
         GPIO.output(IN2,True)
         GPIO.output(IN1,False)
         GPIO.output(IN3,False)
-        self.LIGHT.W_LIGHT()#倒车灯
+        self.LIGHT.W_LIGHT()#倒车灯白色
     def turn_left(self):
         print('turn_left')
         self.LIGHT.C_LIGHT()
@@ -71,7 +71,7 @@ class Car():
         GPIO.output(IN2,False)
         GPIO.output(IN3,False)
         GPIO.output(IN4,False)
-        self.LIGHT.B_LIGHT()#转向灯
+        self.LIGHT.B_LIGHT()#转向灯蓝色
     def turn_right(self):
         print('turn_right')
         self.LIGHT.C_LIGHT()
@@ -79,7 +79,7 @@ class Car():
         GPIO.output(IN1,False)
         GPIO.output(IN2,False)
         GPIO.output(IN4,False)
-        self.LIGHT.B_LIGHT()
+        self.LIGHT.B_LIGHT()#转向灯蓝色
 class dangerous():
     '''
         提供一个，在危险的时候小车的动作
@@ -95,6 +95,10 @@ class dangerous():
         self.action = Car()
         self.BEE = BEE
     def get(self):
+        '''
+        通过位于接口上的的超声波传感器，获取到小车距离障碍物的距离
+        :return:小车距离前方障碍物的距离
+        '''
         GPIO.output(TRIG,True)
         time.sleep(0.00015)
         GPIO.output(TRIG,False)
@@ -106,26 +110,57 @@ class dangerous():
         t2 = time.time()
         return (t2-t1)*340 * 100/2
     def check(self):
+        '''
+        传入实例的get()方法的返回值判断小车是否遇到危险
+        并操作实例的ring，和action中的stop()方法
+        :return: 0
+        '''
         if self.get()<5:
             self.action.stop()
             self.ring()
             return 0
     def ring(self):
+        '''
+        调用会响
+        :return:
+        '''
         GPIO.output(BEE,GPIO.LOW)
         time.sleep(1)
         GPIO.output(BEE,GPIO.HIGH)
 class car_light():
+    '''
+    小车灯光的的类，以小车中LED灯光矩阵为对象
+    '''
     def R_LIGHT(self):
+        '''
+        红灯
+        :return:
+        '''
         GPIO.output(R_LIGHT,GPIO.HIGH)
     def G_LIGHT(self):
+        '''
+        绿灯
+        '''
         GPIO.output(G_LIGHT,GPIO.HIGH)
     def B_LIGHT(self):
+        '''
+        蓝灯
+        :return:
+        '''
         GPIO.output(B_LIGHT,GPIO.HIGH)
     def C_LIGHT(self):
+        '''
+        关灯
+        :return:
+        '''
         GPIO.output(R_LIGHT,GPIO.LOW)
         GPIO.output(G_LIGHT,GPIO.LOW)
         GPIO.output(B_LIGHT,GPIO.LOW)
     def W_LIGHT(self):
+        '''
+        白灯
+        :return:
+        '''
         GPIO.output(R_LIGHT,GPIO.HIGH)
         GPIO.output(G_LIGHT,GPIO.HIGH)
         GPIO.output(B_LIGHT,GPIO.HIGH)

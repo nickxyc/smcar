@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from remotecontrol import
+from remotecontrol import *
 #from Carclass import Car
 import time
 #from Carclass import dangerous
@@ -22,7 +22,11 @@ try:
     GPIO.setup(caraction.R_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.G_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.B_LIGHT,GPIO.OUT,initial = GPIO.LOW)
-
+    print('选择模式')
+    print('1.遥控模式')
+    choice = input()
+    if choice == '1':
+        remote()
 finally:
     time.sleep(1)
     GPIO.cleanup()

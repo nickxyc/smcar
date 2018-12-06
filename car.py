@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
-from Carclass import Car
+from remotecontrol import
+#from Carclass import Car
 import time
-from Carclass import dangerous
+#from Carclass import dangerous
 '''小车的初始化程序，小车设备的主程序，各个模块的枢纽，也是面向用户的接口，用户可以通过这个模块来实现
 对小车的控制。未来友GUI计划，但是不保证可实现性'''
 '''
@@ -21,10 +22,7 @@ try:
     GPIO.setup(caraction.R_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.G_LIGHT,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(caraction.B_LIGHT,GPIO.OUT,initial = GPIO.LOW)
-    caraction = Car()
-    dangerous = dangerous()
-    #time.sleep(3)
-    #caraction.stop()
+
 finally:
     time.sleep(1)
     GPIO.cleanup()

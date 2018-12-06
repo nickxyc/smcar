@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
-from Carclass import Car
+from Carclass import Car,dangerous
 import socket
 import threading
 '''
@@ -8,20 +8,34 @@ import threading
 version 1.0
 author nick_xyc
 '''
-caration = Car()
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.bind('127.0.0.1',9999)
-s.listen(5)
-def deal(sock,addr):
+def remote():
+    caration = Car()
+    dangerous = dangerous()
+    a = threading.Thread(target=dangerous.check)
+    a.start()
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.bind('127.0.0.1',9999)
+    s.listen(5)
+    print('等待连接')
+    while True:
+        sock,addr = s.accept()
+        d = threading.Thread(target=deal,args=(sock,addr,caration))
+        d.start()
+def deal(sock,addr,caration):
     '''
     处理来自网络的命令将其变成小车的动作
     :return:
     '''
-    if sock.recv(1024).decode('utf-8') == 'go':
-        caration.
+    recvmessage = sock.recv(1024).decode('utf-8')
+    if recvmessage == 'F':
+        caration.forward()
+    if recvmessage == 'L':
+        caration.turn_left()
+    if recvmessage == 'R':
+        caration.trun_right()
+    if recvmessage == 'S':
+        caration.stop()
+    if recvmessage == 'B':
+        caration.back()
 
 
-print('等待连接')
-while True:
-    sock,addr = s.accept()
-    threading.Thread(target=deal,args=(sock,addr))

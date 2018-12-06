@@ -110,10 +110,11 @@ class dangerous():
         并操作实例的ring，和action中的stop()方法
         :return: 0
         '''
-        if self.get()<5:
-            self.action.stop()
-            self.ring()
-            return 0
+        while True:
+            if self.get()<5:
+                self.action.stop()
+                self.ring()
+                return 0
     def ring(self):
         '''
         调用会响

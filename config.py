@@ -1,0 +1,10 @@
+IN1 = 37#1 right
+IN2 = 35#
+IN3 = 33#2 left
+IN4 = 31#
+TRIG = 3#i
+ECHO = 5
+BEE = 23
+R_LIGHT = 40
+G_LIGHT = 38
+B_LIGHT = 36

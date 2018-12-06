@@ -1,17 +1,9 @@
 import RPi.GPIO as GPIO
 import time
+from config import *
 '''此模块为小车的各种定义'''
 '''封装小车的相关方法，方便其他模块直接调用'''
-IN1 = 37#1 right
-IN2 = 35#
-IN3 = 33#2 left
-IN4 = 31#
-TRIG = 3#i                     
-ECHO = 5
-BEE = 23
-R_LIGHT = 40
-G_LIGHT = 38
-B_LIGHT = 36
+
 
 class Car():
     '''

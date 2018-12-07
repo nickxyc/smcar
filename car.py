@@ -17,7 +17,7 @@ def remote():
     a = threading.Thread(target=dangerous.check)
     a.start()
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.bind('127.0.0.1',9999)
+    s.bind(('127.0.0.1',9999))
     s.listen(5)
     print('等待连接')
     while True:

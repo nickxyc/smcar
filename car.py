@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from remotecontrol import *
 from Carclass import Car
 import time
-#from Carclass import dangerous
+from Carclass import dangerous
 '''小车的初始化程序，小车设备的主程序，各个模块的枢纽，也是面向用户的接口，用户可以通过这个模块来实现
 对小车的控制。未来友GUI计划，但是不保证可实现性'''
 '''
@@ -10,6 +10,7 @@ version 1.0.0
 auther nick
 '''
 caraction = Car()
+dangerous = dangerous()
 try:
     '''设置树莓派上GPIO接口的初始状态，并且实例对象'''
     GPIO.setmode(GPIO.BOARD)

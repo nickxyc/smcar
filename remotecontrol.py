@@ -27,6 +27,7 @@ def deal(sock,addr,caration):
     处理来自网络的命令将其变成小车的动作
     :return:
     '''
+    print('连接于%'%addr)
     recvmessage = sock.recv(1024).decode('utf-8')
     if recvmessage == 'F':
         caration.forward()

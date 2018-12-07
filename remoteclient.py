@@ -2,7 +2,7 @@ import socket
 from config import *
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect((IP,PORT))
+s.connect(('127.0.0.1',PORT))
 while True:
     print('你想作什么')
     sendmessage = input()

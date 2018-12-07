@@ -20,8 +20,10 @@ def remote():
     print('等待连接')
     while True:
         sock,addr = s.accept()
-        d = threading.Thread(target=deal,args=(sock,addr,caration))
-        d.start()
+        while True:
+            deal(sock,addr,caration)
+        #d = threading.Thread(target=deal,args=(sock,addr,caration))
+        #d.start()
 def deal(sock,addr,caration):
     '''
     处理来自网络的命令将其变成小车的动作

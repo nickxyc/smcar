@@ -9,8 +9,8 @@ import threading
 version 1.0
 author nick_xyc
 '''
-    caration = Car()
-    dangerous = dangerous()
+caration =Car()
+dangerous = dangerous()
 def remote():
     a = threading.Thread(target=dangerous.check)
     a.start()

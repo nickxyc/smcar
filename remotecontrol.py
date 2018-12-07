@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
-from Carclass import Car,dangerous
+from Carclass import Car
+from Carclass import dangerous
 import socket
 import threading
 '''
@@ -8,9 +9,9 @@ import threading
 version 1.0
 author nick_xyc
 '''
-def remote():
     caration = Car()
     dangerous = dangerous()
+def remote():
     a = threading.Thread(target=dangerous.check)
     a.start()
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
